@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PdiscenteComponent } from './pdiscente.component';
+import { PortalDiscenteComponent } from './portal-discente.component';
 
-describe('PdiscenteComponent', () => {
-  let component: PdiscenteComponent;
-  let fixture: ComponentFixture<PdiscenteComponent>;
+describe('PortalDiscenteComponent', () => {
+  let component: PortalDiscenteComponent;
+  let fixture: ComponentFixture<PortalDiscenteComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PdiscenteComponent ]
+      declarations: [ PortalDiscenteComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PdiscenteComponent);
+    fixture = TestBed.createComponent(PortalDiscenteComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
