@@ -1,0 +1,10 @@
+
+.form-login{
+    background-color: white;
+    color: #000000;
+    padding: 30px;
+    box-sizing: border-box;
+    border: 0 none;
+	border-radius: 3px;
+	box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+}

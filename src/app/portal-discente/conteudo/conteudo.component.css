@@ -1,0 +1,9 @@
+.white{
+    color:#ffffff;
+}
+.fullheight{
+    height:100%;
+    padding:auto;
+    height: 100vh;  
+    margin: auto;
+}
