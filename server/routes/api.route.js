@@ -20,7 +20,7 @@ const sendError = (err, res) => {
 };
 
 // Response handling
-let response = {
+const response = {
     status: 200,
     data: [],
     message: null

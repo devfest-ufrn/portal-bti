@@ -1,0 +1,30 @@
+.enfases-title{
+    color: #000000;
+    margin:auto auto 40px auto;
+    font-weight: 300;
+}
+.sub-title{
+    margin-top:15px;
+    display:block;
+    position:relative;
+    font-size:0.5em;
+}
+.caixa-texto{
+    padding:4px;
+    box-sizing: border-box;
+     
+}
+.caixa-texto h3{
+    text-align:center;
+    margin-bottom: 16px;
+}
+.caixa-texto p{
+    text-align:justify;
+}
+.icon-center{
+    text-align:center;
+    margin-bottom:1em;
+}
+.icon-center i{
+    font-size: 6em;
+}

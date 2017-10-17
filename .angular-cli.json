@@ -21,7 +21,11 @@
       "styles": [
         "styles.css"
       ],
-      "scripts": [],
+      "scripts": [
+        "../node_modules/jquery/dist/jquery.min.js",
+        "../node_modules/ng2-smooth-scroll/lib/ng2-SmoothScroll.directive.ts",
+        "../node_modules/ng2-page-scroll/bundles/ng2-page-scroll.umd.min.js"
+        ],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",

@@ -1,3 +1,18 @@
+.greetings{
+    color:#ffffff;
+}
+
+.btn-greetings {
+}
+
+.get-started-text {
+    text-align: center;
+}
+
+.get-started-btn{
+    /*margin-top:10px !important;*/
+    padding: .5rem 5em !important;
+}
 
 .form-login{
     background-color: white;

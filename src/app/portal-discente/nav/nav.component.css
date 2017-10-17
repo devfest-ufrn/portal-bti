@@ -1,0 +1,32 @@
+.navbar-nav a {
+    color: #FFFFFF !important; 
+    font-weight: bold !important;
+  }
+  .navbar{
+    padding-top:5px;
+    padding-left:0;
+    padding-right:0;
+    padding-bottom:5px;
+  }
+  .navbar-brand{
+    color:#FFFFFF !important;
+  }
+  
+.fixed-nav{
+    transition: all 1s ;
+}
+
+.fixed-nav{
+    background-color:#000000 !important;
+    padding: 0px  !important;
+    margin-bottom: 10px;
+    position: fixed;
+    top:0;
+	  z-index:888;
+    width: 100%;
+}
+.navbar-animation {
+    
+   transition: all 1s ;
+}
+

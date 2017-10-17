@@ -12,8 +12,7 @@ import { PortalDiscenteModule } from './portal-discente/portal-discente.module';
   imports: [
     BrowserModule,
     PortalDiscenteModule
-    
-  ],
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

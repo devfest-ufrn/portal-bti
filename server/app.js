@@ -1,30 +1,30 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const path = require('path');
-const http = require('http');
-const app = express();
+'use strict'
 
-// API file for interacting with MongoDB
-//const api = require('./routes/api');
-// Parsers
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false}));
+const express = require('express')
+const path = require('path')
+const app = express()
+//const passport = require('passport')
 
-// Angular DIST output folder
-app.use(express.static(path.join(__dirname, '../dist')));
 
-// API location
-//app.use('/api', api);
+// middlewares
+app.use(express.json())
+app.use(express.urlencoded({extended:false}))
+app.use(express.static(path.join(__dirname, '../dist')))
+//app.use(passport.initialize())
 
-// Send all other requests to the Angular app
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '../dist/index.html'));
-});
+// routes
+const indexRoute = require('./routes/index.route')
+const apresentacaoRoute = require('./routes/apresentacao.route')
+const enfasesRoute = require('./routes/enfases.route')
 
-//Set Port
-const port = process.env.PORT || '3000';
-app.set('port', port);
 
-const server = http.createServer(app);
+app.use('/', indexRoute)
+app.use('/apresentacao',apresentacaoRoute)
+app.use('/enfases',enfasesRoute)
+//const api = require('./routes/api.route')
+//app.use('/api', api)
 
-server.listen(port, () => console.log(`Running on localhost:${port}`));
+
+app.set('port', process.env.PORT || '3000')
+const port = app.get('port')
+app.listen(port, () => console.log(`Running on localhost:${port}`))
