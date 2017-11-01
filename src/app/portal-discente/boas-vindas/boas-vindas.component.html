@@ -5,14 +5,19 @@
 				<h1>Seja bem-vindo(a)!</h1>
 				<p class="lead">Este é o portal do curso de Tecnologia da Informação da Universidade Federal do Rio Grande do Norte.</p>
 				<p class="lead">Ainda não é aluno? tem interesse em ingressar no curso? Faça um tour clicando no botão abaixo e você saberá tudo o que precisa para entrar nesse mundo de tecnologia.</p>
-				<p class="lead get-started-text"><a href="apresentacao"><button class="btn btn-light get-started-btn">Faça um Tour!</button></a></p>
+				<!--<p class="lead get-started-text"><a  [routerLink]="['/tour']"><button class="btn btn-light get-started-btn">Faça um Tour!</button></a></p>-->
+				<div class="col-md-12 col-lg-6 get-start-div">
+					<p class="lead get-started-text"><a  href="#"><button class="btn btn-light get-started-btn">Faça um Tour!</button></a></p>
+				</div>
 			</div>
 		</div>
 	</div>
 	<div class="col-md-6 col-lg-4">
 		<div class="container form-login">
 			<form method="post" action="/">
-				<div class="form-group">
+				<div style="text-align:center" class="form-group">
+					<i class="fa fa-graduation-cap" aria-hidden="true"></i><br>
+					<p>Orientador Virtual</p>
 					<p>Faça login com suas credenciais do SIGAA</p>
 					<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Usuário">
 				</div>

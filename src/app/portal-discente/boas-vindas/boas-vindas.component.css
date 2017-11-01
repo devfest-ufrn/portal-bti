@@ -1,0 +1,36 @@
+.greetings {
+    color:#ffffff;
+}
+
+.get-start-div {
+    margin: 0 25%;
+    padding-right: 0px !important;
+    padding-left: 0px !important;
+}
+
+.get-started-text {
+    text-align: center;
+}
+
+.get-started-btn {
+    color: white;
+    background-color: transparent;
+    width: 100%;
+    /*padding: .5rem 5em !important;*/
+}/*
+@media screen and (min-width: 992px) {
+    .get-started-div {
+        margin: 0;
+    }
+}
+*/
+.form-login {
+    background-color: white;
+    color: #000000;
+    padding: 30px;
+    box-sizing: border-box;
+    border: 0 none;
+	border-radius: 3px;
+	box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+}
+

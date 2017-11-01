@@ -24,7 +24,6 @@ app.use('/enfases',enfasesRoute)
 //const api = require('./routes/api.route')
 //app.use('/api', api)
 
-
 app.set('port', process.env.PORT || '3000')
 const port = app.get('port')
-app.listen(port, () => console.log(`Running on localhost:${port}`))
+app.listen(process.env.PORT, process.env.IP, () => console.log(`Running on localhost:${port}`))

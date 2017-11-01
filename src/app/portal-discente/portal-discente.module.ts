@@ -1,19 +1,35 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PortalDiscenteComponent } from './portal-discente.component';
-import { ConteudoComponent } from './conteudo/conteudo.component';
+import { ResumoComponent } from './resumo/resumo.component';
 import { EnfasesComponent } from './enfases/enfases.component';
 import { EstagiosComponent } from './estagios/estagios.component';
-import { ServicesComponent } from './services/services.component';
-import { LoginComponent } from './login/login.component';
+import { ServicosComponent } from './servicos/servicos.component';
+import { BoasVindasComponent } from './boas-vindas/boas-vindas.component';
 import { FooterComponent } from './footer/footer.component';
-import { NavComponent } from './nav/nav.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   imports: [
     CommonModule
   ],
-  declarations: [PortalDiscenteComponent, ConteudoComponent, EnfasesComponent, EstagiosComponent, ServicesComponent, LoginComponent, FooterComponent, NavComponent]
-  ,exports:[PortalDiscenteComponent]
+  declarations: [
+    BoasVindasComponent,
+    ResumoComponent,
+    EnfasesComponent,
+    EstagiosComponent,
+    ServicosComponent,
+    FooterComponent,
+    NavbarComponent
+  ],
+  exports: [
+    BoasVindasComponent,
+    ResumoComponent,
+    EnfasesComponent,
+    EstagiosComponent,
+    ServicosComponent,
+    FooterComponent,
+    NavbarComponent
+  ]
 })
-export class PortalDiscenteModule { }
+export class PortalDiscenteModule {
+}
