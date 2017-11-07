@@ -2,7 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
-
+/*
+interface Discipilna {
+  codigo: string,
+  
+}
+*/
 @Component({
   templateUrl: './disciplina.component.html',
   styleUrls: ['./disciplina.component.css']
