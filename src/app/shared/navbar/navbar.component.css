@@ -1,0 +1,42 @@
+.navbar-nav a {
+    color: #FFFFFF !important; 
+    font-weight: bold !important;
+  }
+  .navbar{
+    padding-top:5px;
+    padding-left:0;
+    padding-right:0;
+    padding-bottom:5px;
+  }
+  .navbar-brand{
+    color:#FFFFFF !important;
+  }
+  
+.fixed{
+    transition: all 1s ;
+}
+
+.fixed{
+    background-color:#000000 !important;
+    padding: 0px  !important;
+    position: fixed;
+    display: block;
+	z-index:888;
+    width: 100%;
+}
+.navbar-toggler{
+    background-color:rgba(255,255,255,1); 
+    padding:4px 6px 4px 6px !important;
+}
+
+nav>.container{
+    padding:6px !important;
+}
+
+.navbar-animation {
+   transition: all 1s ;
+}
+.navbar-toggler-icon{
+    font-weight:900;
+
+}

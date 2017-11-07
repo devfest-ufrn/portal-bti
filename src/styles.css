@@ -9,7 +9,7 @@ html {
 	/*background = gradient + image pattern combo*/
 	background: 
 		linear-gradient(rgba(43,45,66,0.2) ,rgba(141,153,174, 0.2), rgba(237,242,244, 0.2)), 
-		url('http://chopin.musica.ufrn.br/semufrn2/assets/img/gs.png');
+		url('http://chopin.musica.ufrn.br/semufrn2/assets/img/science.png');
 }
 body{
     width: 100%;
