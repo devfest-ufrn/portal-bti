@@ -16,8 +16,10 @@ import { EstagiosComponent } from './estagios/estagios.component';
 import { CurriculosComponent } from './curriculos/curriculos.component';
 import { DisciplinasComponent } from './disciplinas/disciplinas.component';
 import { DisciplinaComponent } from './disciplinas/disciplina/disciplina.component';
+import { DisciplinaService } from './disciplinas/disciplina/disciplina.service';
 import { EnfasesComponent } from './enfases/enfases.component';
 import { OrientadorComponent } from './orientador/orientador.component';
+
 
 
 @NgModule({
@@ -40,7 +42,7 @@ import { OrientadorComponent } from './orientador/orientador.component';
     HomeModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [DisciplinaService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
