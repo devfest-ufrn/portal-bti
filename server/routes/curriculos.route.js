@@ -2,13 +2,13 @@
 
 const express = require('express')
 const router = express.Router()
-const controller = require('../controllers/disciplinas.controller')
+const controller = require('../controllers/curriculos.controller')
 
-// Rotas para testar a api
+// teste
 router.get('/', controller.sendPage)
 router.post('/', controller.redirect)
 
-// Rest API
+// api
 router.get('/:codigo', controller.get)
 
 module.exports = router

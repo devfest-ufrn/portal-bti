@@ -5,8 +5,8 @@ const credencials = require('../config')
 
 exports.sendPage = (req, res, next) => {
 	res.send(`
-		<form method="post" action="/api/disciplinas/">
-			<label>Código da disciplina: <input type="text" name="codigo"></label>
+		<form method="post" action="/api/curriculos/">
+			<label>Código do curriculo: <input type="text" name="codigo"></label>
 			<input type="submit" value="GET"/>
 		</form>
 		<a href="/api">voltar</a>
@@ -14,7 +14,7 @@ exports.sendPage = (req, res, next) => {
 }
 
 exports.redirect = (req, res, next) => {
-	res.redirect(`/api/disciplinas/${req.body.codigo}`)
+	res.redirect(`/api/curriculos/${req.body.codigo}`)
 }
 
 exports.get = (req, res, next) => {
@@ -28,10 +28,14 @@ exports.get = (req, res, next) => {
 	request(options)
 		.then((auth) => {
 			var request = require('request-promise')
+			
+			// id do curso de tecnologia da informação da api
+			var id_curso = 92127264
 			var codigo = req.params.codigo
+			
 			var options = {
 				'method': 'GET',
-				'uri': `${credencials['api-url']}/curso/v0.1/componentes-curriculares?codigo=${codigo}&limit=1`,
+				'uri': `${credencials['api-url']}/curso/v0.1/matrizes-curriculares?id-curso=${id_curso}&ativo=true`,
 				'json': true,
 				'headers': {
 					'authorization': `${auth.token_type} ${auth.access_token}`,
@@ -42,7 +46,7 @@ exports.get = (req, res, next) => {
 			request(options)
 				.then((response) => {
 					// formata a resposta da api
-					const disciplina = response[0];
+					const disciplina = response;
 					res.header('Access-Control-Allow-Origin', '*').status(200).send(disciplina)
 				})
 				.catch((error)=>{
