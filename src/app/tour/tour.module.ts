@@ -3,23 +3,20 @@ import { CommonModule } from '@angular/common';
 
 import { TourComponent } from './tour.component';
 
-import { TourStartComponent } from './tour-start/tour-start.component';
+import { BoasVindasComponent } from './boas-vindas/boas-vindas.component';
 import { CursoComponent } from './curso/curso.component';
 import { IngressoComponent } from './ingresso/ingresso.component';
 import { ConteudoComponent } from './conteudo/conteudo.component';
 import { EnfaseComponent } from './enfase/enfase.component';
 import { CiclosComponent } from './ciclos/ciclos.component';
-//shared modules
-import { FooterModule } from '../shared/footer/footer.module';
 
 @NgModule({
   imports: [
-    CommonModule,
-    FooterModule
+    CommonModule
   ],
   declarations: [
     TourComponent,
-    TourStartComponent,
+    BoasVindasComponent,
     CursoComponent,
     IngressoComponent,
     ConteudoComponent,
