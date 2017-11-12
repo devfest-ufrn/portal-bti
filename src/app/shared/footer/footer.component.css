@@ -1,3 +1,11 @@
+:host {
+    bottom: 0;
+    display:block;
+    background-color: rgb(25,25,25);
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
 .footer-menu {
   list-style-type: none;
 }
@@ -18,3 +26,5 @@
     margin-top:0px !important;
     padding-top:2px !important;
 }
+
+

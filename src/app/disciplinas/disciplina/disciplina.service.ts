@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core'
 import { HttpClient } from '@angular/common/http';
 import { HttpErrorResponse } from '@angular/common/http';
+import { environment } from '../../../environments/environment';
 
 /* @TODO
 interface Discipilna {}
@@ -11,7 +12,8 @@ export class DisciplinaService {
 	constructor(private http: HttpClient) {}
 	
 	getDisciplina(codigo:string) {
-		this.http.get('https://portal-bti-giordanorn.c9users.io:8080/api/disciplinas/' + codigo).subscribe(
+		// requisita a api local
+		this.http.get(environment.hostname + '/disciplinas/' + codigo).subscribe(
 		  data => {
 				console.log(data);
 				//return data;

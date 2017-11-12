@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-conteudo',
+  selector: 'tour-conteudo',
   templateUrl: './conteudo.component.html',
   styleUrls: ['./conteudo.component.css']
 })

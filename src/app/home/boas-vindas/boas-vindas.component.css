@@ -1,35 +1,50 @@
+:host {
+	background-color: rgba(0,0,0,0.4);
+	border: 0px;
+	width: 100%;
+	padding-top: 150px;
+	padding-bottom: 120px;
+}
+
 .greetings {
-    color:#ffffff;
+	color:#ffffff;
+	text-shadow: 1px 1px 5px black;
 }
 
-.get-start-div {
-    margin: 0 25%;
-    padding-right: 0px !important;
-    padding-left: 0px !important;
+.tour {
+	text-align: center;
 }
 
-.get-started-text {
-    text-align: center;
+.btn-tour {
+	color: white;
+	background-color: transparent;
+	border: solid white 2px;
+	border-radius: 5px;
+	width: 100%;
+	max-width: 510px;
+	
 }
-
-.get-started-btn {
-    color: white;
-    background-color: transparent;
-    width: 100%;
-    /*padding: .5rem 5em !important;*/
-}/*
 @media screen and (min-width: 992px) {
-    .get-started-div {
-        margin: 0;
-    }
+	.btn-tour {
+		width: 300px;
+	}
 }
-*/
+@media screen and (max-width: 768px) {
+	.btn-tour {
+		margin-bottom: 100px;
+	}
+}
+.tour-btn-text {
+	text-align: center;
+}
+
 .form-login {
-    background-color: white;
-    color: #000000;
-    padding: 30px;
-    box-sizing: border-box;
-    border: 0 none;
+	height: 100%;
+	background-color: white;
+	color: #000000;
+	padding: 30px;
+	box-sizing: border-box;
+	border: 0 none;
 	border-radius: 3px;
 	box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
 }

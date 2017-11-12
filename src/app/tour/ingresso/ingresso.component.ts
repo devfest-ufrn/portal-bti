@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-ingresso',
+  selector: 'tour-ingresso',
   templateUrl: './ingresso.component.html',
   styleUrls: ['./ingresso.component.css']
 })

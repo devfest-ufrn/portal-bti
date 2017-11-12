@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-enfase',
+  selector: 'tour-enfase',
   templateUrl: './enfase.component.html',
   styleUrls: ['./enfase.component.css']
 })

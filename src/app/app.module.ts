@@ -9,6 +9,10 @@ import { AppRoutingModule } from './app.routing';
 import { HomeModule } from './home/home.module';
 import { TourModule } from './tour/tour.module';
 import { EstagiosModule } from './estagios/estagios.module';
+import { NavbarComponent } from './shared/navbar/navbar.component';
+import { FooterComponent } from './shared/footer/footer.component';
+import { NavbarModule } from './shared/navbar/navbar.module';
+import { FooterModule } from './shared/footer/footer.module';
 
 import { AppComponent } from './app.component';
 import { NotFoundComponent } from './not-found/not-found.component';
@@ -38,6 +42,8 @@ import { OrientadorComponent } from './orientador/orientador.component';
     BrowserModule,
     HttpClientModule,
     FormsModule,
+    NavbarModule,
+    FooterModule,
     TourModule,
     HomeModule,
     AppRoutingModule

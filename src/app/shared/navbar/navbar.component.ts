@@ -22,21 +22,15 @@ export class NavbarComponent implements OnInit {
  
 
   toggleState() { // click handler
-        let bool = this.isIn;
-        this.isIn = bool === false ? true : false; 
-        console.log(this.isIn);
+    this.isIn = this.isIn === false ? true : false; 
   }
 
 
   @HostListener("window:scroll", [])
   onWindowScroll() {
-    let number =  document.documentElement.scrollTop || 0;
-    if (number >= 40 && this.navIsFixed == false) {
-      this.navIsFixed = true;
-    } else if (number < 40 && this.navIsFixed == true) {
-      this.navIsFixed = false;
-    }
-    console.log(number);
+    const scroll =  document.documentElement.scrollTop || 0;
+    const limit = 60;
+    this.navIsFixed = (scroll > limit) ? true : false;
   }
 
 }

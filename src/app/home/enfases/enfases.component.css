@@ -1,3 +1,9 @@
+:host {
+    background-color: white;
+    padding: 40px 0;
+    width: 100%;
+}
+
 .enfases-title{
     color: #000000;
     margin:auto auto 40px auto;

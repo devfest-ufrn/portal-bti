@@ -1,33 +1,8 @@
 .container-fluid {
-    background-color: rgba(0,0,0,0.5);
-    padding: 0  !important;
+	padding: 0  !important;
 }
 
-.row {
-    background-color: white;
-    border-top: 1px solid lightgrey;
-    padding-top: 40px;
-    padding-bottom: 40px;
-    margin: 0 !important;
+section {
+	margin: 0 !important;
+	width: 100%;
 }
-
-#boas-vindas {
-    background-color: transparent;
-    border: 0px;
-    padding-top: 80px;
-    padding-bottom: 80px;
-}
-
-#resumo {
-    border: 0px;
-    padding-top:100px;
-}
-#enfases{
-    padding-top:100px;
-}
-#footer {
-    position: relative;
-    display:block;
-    background-color: rgba(0,0,0,0.96);
-}
-

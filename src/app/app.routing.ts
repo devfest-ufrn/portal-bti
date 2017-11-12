@@ -14,14 +14,14 @@ import { OrientadorComponent } from './orientador/orientador.component';
 
 const routes: Routes = [
 	{ path: '', component: HomeComponent },
-	{	path: 'tour', component: TourComponent },
-	{	path: 'estagios',	component: EstagiosComponent },
-	{	path: 'enfases', component: EnfasesComponent },
-	{	path: 'curriculos',	component: CurriculosComponent },
-	{	path: 'disciplinas', component: DisciplinasComponent },
-	{	path: 'disciplinas/:codigo', component: DisciplinaComponent },
-	{	path: 'orientador',	component: OrientadorComponent },
-	{	path: '**',	component: NotFoundComponent}
+	{ path: 'tour', component: TourComponent },
+	{ path: 'estagios',	component: EstagiosComponent },
+	{ path: 'enfases', component: EnfasesComponent },
+	{ path: 'curriculos',	component: CurriculosComponent },
+	{ path: 'disciplinas', component: DisciplinasComponent },
+	{ path: 'disciplinas/:codigo', component: DisciplinaComponent },
+	{ path: 'orientador',	component: OrientadorComponent },
+	{ path: '**',	component: NotFoundComponent }
 ];
 
 @NgModule ({
