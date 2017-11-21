@@ -10,8 +10,7 @@ export class DisciplinasComponent implements OnInit {
 
   constructor(private router: Router) {}
  
-  ngOnInit() {
-  }
+  ngOnInit() {}
   
   select(value) {
     this.router.navigate(['/disciplinas', value])

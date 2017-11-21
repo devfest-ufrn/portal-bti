@@ -1,4 +1,15 @@
 <div class="container-fluid">
     <h1>Disciplina {{codigo}}</h1>
-    <p>{{dados}}</p>
+    <div class="disciplina" *ngIf="data_received">
+        <p>Nome: {{disciplina['nome']}}</p>
+        <p>Código: {{disciplina['codigo']}}</p>
+        <p>Equivalentes: {{disciplina['equivalentes']}}</p>
+        <p>Pré-requisitos: {{disciplina['pre-requisitos']}}</p>
+        <p>Có-requisitos: {{disciplina['co-requisitos']}}</p>
+        <p>Departamento: {{disciplina['departamento']}}</p>
+        <p>Carga Horária: {{disciplina['carga-horaria-total']}}h</p>
+        <ul *ngIf="disciplina['componentesBloco']" >Bloco:
+            <li *ngFor="let bloco of disciplina['componentesBloco']"><p>{{bloco['codigo']}}</p></li>
+        </ul>
+    </div>
 </div>

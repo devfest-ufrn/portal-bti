@@ -34,15 +34,15 @@
 		margin-bottom: 100px;
 	}
 }
-.tour-btn-text {
-	text-align: center;
-}
 
-.form-login {
+.login {
+	text-align: center;
 	height: 100%;
+	width: 100%;
 	background-color: white;
 	color: #000000;
-	padding: 30px;
+	padding-top: 30px;
+	padding-bottom: 30px;
 	box-sizing: border-box;
 	border: 0 none;
 	border-radius: 3px;

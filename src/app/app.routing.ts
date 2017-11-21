@@ -18,8 +18,9 @@ const routes: Routes = [
 	{ path: 'estagios',	component: EstagiosComponent },
 	{ path: 'enfases', component: EnfasesComponent },
 	{ path: 'curriculos',	component: CurriculosComponent },
-	{ path: 'disciplinas', component: DisciplinasComponent },
-	{ path: 'disciplinas/:codigo', component: DisciplinaComponent },
+	//{ path: 'disciplinas', component: DisciplinasComponent }
+	{ path: 'disciplinas', component: DisciplinasComponent,	children: [ { path:':codigo', component:DisciplinaComponent } ] },
+	//{ path: 'disciplinas/:codigo', component: DisciplinaComponent },
 	{ path: 'orientador',	component: OrientadorComponent },
 	{ path: '**',	component: NotFoundComponent }
 ];
