@@ -1,23 +1,8 @@
 'use strict'
 
-const path = require('path')
 const credencials = require('../config')
 
-exports.sendPage = (req, res, next) => {
-	res.send(`
-		<form method="post" action="/api/curriculos/">
-			<label>Código do curriculo: <input type="text" name="codigo"></label>
-			<input type="submit" value="GET"/>
-		</form>
-		<a href="/api">voltar</a>
-	`)
-}
-
-exports.redirect = (req, res, next) => {
-	res.redirect(`/api/curriculos/${req.body.codigo}`)
-}
-
-exports.get = (req, res, next) => {
+exports.get = (req, res) => {
 	var request = require('request-promise')
 	var options = {
 		'method': 'POST',
@@ -58,4 +43,19 @@ exports.get = (req, res, next) => {
 				// Authentication error
 				res.status(err.statusCode).send(err.message)
 		});
+}
+
+
+// JUST FOR TESTING API DIRECTLY FROM API ROUTE
+exports.sendPage = (req, res, next) => {
+	res.send(`
+		<form method="post" action="/api/curriculos/">
+			<label>Código do curriculo: <input type="text" name="codigo"></label>
+			<input type="submit" value="GET"/>
+		</form>
+		<a href="/api">voltar</a>
+	`)
+}
+exports.redirect = (req, res, next) => {
+	res.redirect(`/api/curriculos/${req.body.codigo}`)
 }

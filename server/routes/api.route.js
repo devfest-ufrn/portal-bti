@@ -3,29 +3,19 @@
 const express = require('express')
 const router = express.Router()
 
-// rotas da api
-const disciplinas = require('./disciplinas.route')
-const login = require('./login.route')
-const curriculos = require('./curriculos.route')
-const orientador = require('./orientador.route')
+// controllers
+const api = require('../controllers/api.controller')
+const disciplinas = require('../controllers/disciplinas.controller')
+const login = require('../controllers/login.controller')
 
-// @TODO
-//const enfases = require('./enfases.route')
-//const login = require('./login.route')
 
-router.use('/disciplinas', disciplinas)
-router.use('/curriculos', curriculos)
-router.use('/orientador', orientador)
-router.use('/login', login)
-
-// 'interface' da api para teste
-router.get('/',(req, res) => {
-	res.send(`
-		<h1>Portal BTI API</h1>
-		<a href="/api/disciplinas">disciplinas</a>
-		<a href="/api/curriculos">curriculos</a>
-		<a href="/api/login">login</a>
-	`)
-})
-
+// Rotas para testar a api diretamente
+router
+	.get('/disciplinas', disciplinas.sendPage)
+	.post('/disciplinas', disciplinas.redirect)
+// Rest API
+router
+	.get('/', api.get)
+	.get('/disciplinas/:codigo', disciplinas.get)
+	
 module.exports = router
