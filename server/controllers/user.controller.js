@@ -21,7 +21,8 @@ exports.authenticate = (req, res) => {
 		})
 }
 
-exports.get_user_info = (req, res) => {
+/* username, nome, cpf */
+exports.user_info = (req, res) => {
 	let request = require('request-promise');
 	let version = credencials['version'];
 	let key = credencials['x-api-key'];
@@ -39,14 +40,20 @@ exports.get_user_info = (req, res) => {
 
 	request(options)
 		.then(response => {
-			res.send(response);
+			let discente = {
+				username: response['login'],
+				nome: response['nome-pessoa'],
+				cpf: response['cpf-cnpj']
+			}
+			res.send(discente);
 		})
 		.catch(err => {
 			res.status(err.statusCode).send(err.message);
 		})
 }
 
-exports.get_id_discente = (req, res) => {
+/* id-discente */
+exports.id_discente = (req, res) => {
 	let request = require('request-promise');
 	let localhost = credencials['localhost'];
 	let token = req.body.token;
@@ -59,13 +66,13 @@ exports.get_id_discente = (req, res) => {
 		}
 	};
 	request(options)
-		.then(response => {
+		.then( discente => {
 			let request = require('request-promise');
 			let version = credencials['version'];
 			let key = credencials['x-api-key'];
 			let base_url = credencials['api-url'];
 			let token = req.body.token;
-			let cpf = response['cpf-cnpj'];
+			let cpf = discente.cpf;
 			var options = {
 				'method': 'GET',
 				'json': true,
@@ -77,8 +84,9 @@ exports.get_id_discente = (req, res) => {
 			};
 			request(options)
 				.then( response => {
+					discente.id_discente = response[0]['id-discente'];
 					// envia o primeiro vinculo
-					res.send(response[0]);
+					res.send(discente);
 				})
 				.catch( err => {
 					res.status(err.statusCode).send(err);
@@ -89,7 +97,8 @@ exports.get_id_discente = (req, res) => {
 		})
 }
 
-exports.get_semestres_cursados = (req, res) => {
+/* semestres: ano, periodo */
+exports.semestres_cursados = (req, res) => {
 	let request = require('request-promise');
 	let localhost = credencials['localhost'];
 	let token = req.body.token;
@@ -102,13 +111,13 @@ exports.get_semestres_cursados = (req, res) => {
 		}
 	};
 	request(options)
-		.then(response => {
+		.then(discente => {
 			let request = require('request-promise');
 			let version = credencials['version'];
 			let key = credencials['x-api-key'];
 			let base_url = credencials['api-url'];
 			let token = req.body.token;
-			let id = response['id-discente'];
+			let id = discente.id_discente;
 			var options = {
 				'method': 'GET',
 				'json': true,
@@ -122,11 +131,7 @@ exports.get_semestres_cursados = (req, res) => {
 				.then( response => {
 					// envia o ultimo semestre
 					let current_semester = response.length - 1;
-					let discente = {
-						semestre: response[current_semester],
-						id_discente: id
-					}
-					console.log(discente);
+					discente.semestre = response[current_semester];
 					res.send(discente);
 				})
 				.catch( err => {
@@ -138,7 +143,8 @@ exports.get_semestres_cursados = (req, res) => {
 		})
 }
 
-exports.get_tumas_discente = (req, res) => {
+/* turmas do semestre atual: */
+exports.tumas_discente = (req, res) => {
 	let request = require('request-promise');
 	let localhost = credencials['localhost'];
 	let token = req.body.token;
@@ -151,19 +157,19 @@ exports.get_tumas_discente = (req, res) => {
 		}
 	};
 	request(options)
-		.then(response => {
+		.then(discente => {
 			let request = require('request-promise');
 			let version = credencials['version'];
 			let key = credencials['x-api-key'];
 			let base_url = credencials['api-url'];
 			let token = req.body.token;
-			let id = response.id_discente;
-			let periodo = response.semestre.periodo;
-			let ano = response.semestre.ano;
+			let id = discente.id_discente;
+			let periodo = discente.semestre.periodo;
+			let ano = discente.semestre.ano;
 			var options = {
 				'method': 'GET',
 				'json': true,
-				'uri': base_url + `/turma/${version}/notas-unidades?id-participante=${id}&ano=${ano}&periodo=${periodo}`,
+				'uri': base_url + `/turma/${version}/turmas?id-discente=${id}&ano=${ano}&periodo=${periodo}`,
 				'headers': {
 					'authorization': 'bearer ' + token,
 					'x-api-key': key
@@ -171,8 +177,9 @@ exports.get_tumas_discente = (req, res) => {
 			};
 			request(options)
 				.then( response => {
-					console.log(response);
-					res.send(response);
+					// array de turmas do semestre atual
+					discente.turmas = response;
+					res.send(discente);
 				})
 				.catch( err => {
 					res.status(err.statusCode).send(err);

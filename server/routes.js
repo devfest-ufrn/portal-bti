@@ -11,9 +11,9 @@ router
 	.get('/disciplinas/:codigo', disciplinas.get)
 	.get('/curriculos', curriculos.get)
 	.post('/user/auth', user.authenticate)
-	.post('/user/info', user.get_user_info)
-	.post('/user/id_discente', user.get_id_discente)
-	.post('/user/semestres_cursados', user.get_semestres_cursados)
-	.post('/user/turmas_discente', user.get_tumas_discente)
+	.post('/user/info', user.user_info)
+	.post('/user/id_discente', user.id_discente)
+	.post('/user/semestres_cursados', user.semestres_cursados)
+	.post('/user/turmas_discente', user.tumas_discente)
 	
 module.exports = router;
