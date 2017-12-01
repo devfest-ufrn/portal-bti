@@ -13,6 +13,7 @@ export class DisciplinaService {
 	
 	getDisciplina(codigo:string):Observable<Disciplina> {
 		// requisita a api local
-		return this.http.get(environment.hostname + '/disciplinas/' + codigo)
+		let server_url = environment.localhost;
+		return this.http.get(`${server_url}/api/disciplinas/${codigo}`);
 	}
 }

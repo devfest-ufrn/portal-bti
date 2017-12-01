@@ -1,16 +1,21 @@
 import { Component, OnInit } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { AuthService } from '../../shared/services/auth.service';
 
 @Component({
   selector: 'app-boas-vindas',
   templateUrl: './boas-vindas.component.html',
-  styleUrls: ['./boas-vindas.component.css']
+  styleUrls: ['./boas-vindas.component.css'],
+  providers: [ AuthService ]
 })
 export class BoasVindasComponent implements OnInit {
+  
+  constructor(private auth:AuthService){}
 
-  constructor() { }
-
-  ngOnInit() {
+  ngOnInit(){}
+  
+  // click on login button
+  redirect() {
+    this.auth.redirectToLoginPage();
   }
 
 }

@@ -5,5 +5,12 @@
 
 export const environment = {
   production: false,
-  hostname: 'https://portal-bti-giordanorn.c9users.io:8080/api'
+  localhost: 'https://portal-bti-giordanorn.c9users.io:8080',
+  api_sinfo_credencials: {
+  	client_id: 'portal-bti-id',
+  	client_secret: 'segredo',
+  	key: '9fyaWctSN3aCVDZBjccpxIz79OXvjNJLgsbJVcib',
+  	url: 'https://apitestes.info.ufrn.br',
+  	version: 'v0.1'
+  }
 };

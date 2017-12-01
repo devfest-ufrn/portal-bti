@@ -10,17 +10,17 @@ import { DisciplinasComponent } from './disciplinas/disciplinas.component';
 import { DisciplinaComponent } from './disciplinas/disciplina/disciplina.component';
 import { EnfasesComponent } from './enfases/enfases.component';
 import { OrientadorComponent } from './orientador/orientador.component';
-
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
 	{ path: '', component: HomeComponent },
+	{ path: 'login', component: LoginComponent },
 	{ path: 'tour', component: TourComponent },
 	{ path: 'estagios',	component: EstagiosComponent },
 	{ path: 'enfases', component: EnfasesComponent },
 	{ path: 'curriculos',	component: CurriculosComponent },
-	//{ path: 'disciplinas', component: DisciplinasComponent }
-	{ path: 'disciplinas', component: DisciplinasComponent,	children: [ { path:':codigo', component:DisciplinaComponent } ] },
-	//{ path: 'disciplinas/:codigo', component: DisciplinaComponent },
+	{ path: 'disciplinas', component: DisciplinasComponent,
+			children:[{path:':codigo', component:DisciplinaComponent}]},
 	{ path: 'orientador',	component: OrientadorComponent },
 	{ path: '**',	component: NotFoundComponent }
 ];

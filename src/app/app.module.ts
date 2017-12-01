@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
 
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app.routing';
+import { HttpClientModule } from '@angular/common/http';
 
 import { HomeModule } from './home/home.module';
 import { TourModule } from './tour/tour.module';
@@ -23,6 +23,7 @@ import { DisciplinaComponent } from './disciplinas/disciplina/disciplina.compone
 import { DisciplinaService } from './disciplinas/disciplina/disciplina.service';
 import { EnfasesComponent } from './enfases/enfases.component';
 import { OrientadorComponent } from './orientador/orientador.component';
+import { LoginComponent } from './login/login.component';
 
 
 
@@ -36,7 +37,8 @@ import { OrientadorComponent } from './orientador/orientador.component';
     DisciplinaComponent,
     EnfasesComponent,
     EstagiosComponent,
-    OrientadorComponent
+    OrientadorComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
