@@ -1,32 +1,32 @@
+'use strict';
+
 let credencials = require('../environment');
+let secret = credencials['client-secret'];
+let id = credencials['client-id'];
+let base_url = credencials['api-url'];
+let version = credencials['version'];
+let localhost = credencials['localhost'];
+let key = credencials['x-api-key'];
 
 exports.authenticate = (req, res) => {
-	let request = require('request-promise');
-	let secret = credencials['client-secret'];
-	let id = credencials['client-id'];
-	let base_url = credencials['api-url'];
 	let redirect_uri = req.body.redirect_uri;
 	let code = req.body.code;
 	var options = {
 		'method': 'POST',
 		'uri': base_url + `/authz-server/oauth/token?client_id=${id}&client_secret=${secret}&redirect_uri=${redirect_uri}&grant_type=authorization_code&code=${code}`
-	}
-	
+	};
+	let request = require('request-promise');
 	request(options)
 		.then(response => {
 			res.send(response);
 		})
 		.catch(err => {
 			res.status(err.statusCode).send(err.message);
-		})
-}
+		});
+};
 
 /* username, nome, cpf */
 exports.user_info = (req, res) => {
-	let request = require('request-promise');
-	let version = credencials['version'];
-	let key = credencials['x-api-key'];
-	let base_url = credencials['api-url'];
 	let token = req.body.token;
 	var options = {
 		'method': 'GET',
@@ -37,25 +37,23 @@ exports.user_info = (req, res) => {
 			'x-api-key': key
 		}
 	};
-
+	let request = require('request-promise');
 	request(options)
 		.then(response => {
 			let discente = {
 				username: response['login'],
 				nome: response['nome-pessoa'],
 				cpf: response['cpf-cnpj']
-			}
+			};
 			res.send(discente);
 		})
 		.catch(err => {
 			res.status(err.statusCode).send(err.message);
-		})
-}
+		});
+};
 
 /* id-discente */
 exports.id_discente = (req, res) => {
-	let request = require('request-promise');
-	let localhost = credencials['localhost'];
 	let token = req.body.token;
 	var options = {
 		'method': 'POST',
@@ -65,15 +63,12 @@ exports.id_discente = (req, res) => {
 			'token': token
 		}
 	};
+	let request = require('request-promise');
 	request(options)
 		.then( discente => {
-			let request = require('request-promise');
-			let version = credencials['version'];
-			let key = credencials['x-api-key'];
-			let base_url = credencials['api-url'];
 			let token = req.body.token;
 			let cpf = discente.cpf;
-			var options = {
+			let options = {
 				'method': 'GET',
 				'json': true,
 				'uri': base_url + `/discente/${version}/discentes?cpf-cnpj=${cpf}`,
@@ -90,19 +85,17 @@ exports.id_discente = (req, res) => {
 				})
 				.catch( err => {
 					res.status(err.statusCode).send(err);
-				})
+				});
 		})
 		.catch(err => {
 			res.status(err.statusCode).send(err.message);
-		})
-}
+		});
+};
 
 /* semestres: ano, periodo */
 exports.semestres_cursados = (req, res) => {
-	let request = require('request-promise');
-	let localhost = credencials['localhost'];
 	let token = req.body.token;
-	var options = {
+	let options = {
 		'method': 'POST',
 		'json': true,
 		'uri': localhost + `/api/user/id_discente`,
@@ -110,12 +103,9 @@ exports.semestres_cursados = (req, res) => {
 			'token': token
 		}
 	};
+	let request = require('request-promise');
 	request(options)
 		.then(discente => {
-			let request = require('request-promise');
-			let version = credencials['version'];
-			let key = credencials['x-api-key'];
-			let base_url = credencials['api-url'];
 			let token = req.body.token;
 			let id = discente.id_discente;
 			var options = {
@@ -129,39 +119,33 @@ exports.semestres_cursados = (req, res) => {
 			};
 			request(options)
 				.then( response => {
-					// envia o ultimo semestre
-					let current_semester = response.length - 1;
-					discente.semestre = response[current_semester];
+					// envia o todos os semestes
+					discente.semestre = response;
 					res.send(discente);
 				})
 				.catch( err => {
 					res.status(err.statusCode).send(err);
-				})
+				});
 		})
 		.catch(err => {
 			res.status(err.statusCode).send(err.message);
-		})
-}
+		});
+};
 
-/* turmas do semestre atual: */
-exports.tumas_discente = (req, res) => {
-	let request = require('request-promise');
-	let localhost = credencials['localhost'];
+/* turmas do semestre atual */
+exports.turmas_semestre_atual = (req, res) => {
 	let token = req.body.token;
 	var options = {
 		'method': 'POST',
 		'json': true,
-		'uri': localhost + `/api/user/semestres_cursados`,
+		'uri': localhost + '/api/user/semestres_cursados',
 		'body': {
 			'token': token
 		}
 	};
+	let request = require('request-promise');
 	request(options)
 		.then(discente => {
-			let request = require('request-promise');
-			let version = credencials['version'];
-			let key = credencials['x-api-key'];
-			let base_url = credencials['api-url'];
 			let token = req.body.token;
 			let id = discente.id_discente;
 			let periodo = discente.semestre.periodo;
@@ -178,14 +162,54 @@ exports.tumas_discente = (req, res) => {
 			request(options)
 				.then( response => {
 					// array de turmas do semestre atual
+					let current_semester = response.length - 1;
+					discente.turmas = response[current_semester];
+					res.send(discente);
+				})
+				.catch( err => {
+					res.status(err.statusCode).send(err);
+				});
+		})
+		.catch(err => {
+			res.status(err.statusCode).send(err.message);
+		});
+};
+
+/* turmas de todos os semestres */
+exports.turmas = (req, res) => {
+	let token = req.body.token;
+	var options = {
+		'method': 'POST',
+		'json': true,
+		'uri': localhost + `/api/user/semestres_cursados`,
+		'body': {
+			'token': token
+		}
+	};
+	let request = require('request-promise');
+	request(options)
+		.then( discente => {
+			let id = discente.id_discente;
+			var options = {
+				'method': 'GET',
+				'json': true,
+				'uri': base_url + `/turma/${version}/turmas?id-discente=${id}`,
+				'headers': {
+					'authorization': 'bearer ' + token,
+					'x-api-key': key
+				}
+			};
+			request(options)
+				.then( response => {
+					// array de turmas do semestre atual
 					discente.turmas = response;
 					res.send(discente);
 				})
 				.catch( err => {
 					res.status(err.statusCode).send(err);
-				})
+				});
 		})
 		.catch(err => {
 			res.status(err.statusCode).send(err.message);
-		})
-}
+		});
+};
