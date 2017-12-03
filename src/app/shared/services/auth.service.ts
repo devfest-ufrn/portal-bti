@@ -11,7 +11,7 @@ export class AuthService {
 		let body = {
 			token: this.getToken()
 		}
-		return this.http.post('/api/user/turmas_discente',body);
+		return this.http.post('/api/user/turmas_semestre_atual',body);
 	}
 	
 	generateToken(code: String) {

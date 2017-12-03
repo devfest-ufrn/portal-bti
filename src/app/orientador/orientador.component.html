@@ -1,5 +1,152 @@
-<div class="container-fluid">
+<style>
+	.perfil-title{
+		
+		border-bottom: 1px solid rgb(233,236,239);
+		margin-bottom:40px;
+	}
+	.perfil-title h3{
+		font-weight: 300;
+	}
+	.first-div-container{
+		padding-top:3em;
+		padding-bottom:3em;
+		color:white;
+		text-shadow: 2px 2px #000000;
+	}
+.correcao-menu{
+	padding-top:50px;
+}
+#perfil{
+	background-color:white;
+}
+.section-content-ajust{
+	padding-top:40px;
+	padding-bottom:40px;
+}
+.welcome-name{
+	text-decoration:none !important;
+  cursor:pointer;
+  color:rgb(0,123,255) !important;
+  
+
+}
+.welcome-name:hover{
+	text-decoration:underline !important;
+  text-shadow: 1px 1px 1px #555;
+}
+.box-perfil{
+	padding:1px;
+	border: 1px solid rgb(233,236,239);
+	border-radius: 10px;
+}
+
+</style>
+<main class="correcao-menu">
 	<section>
-		<h1>orientador virtual</h1>
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<div class="first-div-container">
+						<h1 class="display-2">Orientador Virtual</h1>
+					</div>
+				</div>
+			</div>
+		</div>
 	</section>
-</div>
+	<section id="perfil" class="section-content-ajust">
+		<div class="container" >
+			<div class="row">
+				<div class="col-12">
+					<div class="perfil-title">
+						<a class="welcome-name" data-toggle="collapse" (click)="toggleState()" aria-expanded="false" aria-controls="perfil" title="Clique para ver seu perfil!"><h3>Bem-vindo, {{Aluno.nome}}<i class="fa fa-eye" aria-hidden="true"></i></h3></a>
+						
+					</div>
+					
+					
+
+				</div>
+			</div>
+			<!-- vou colocar essa div de baixo pra aparecer dps que clicar no "bem vindo fulano"-->
+			<div class="row collapse " [ngClass]="{ 'collapse': isIn }" id="perfil" >
+				<div class="col-3 ">
+					<div class="box-perfil">
+						<div class="row">
+							<div class="col-sm-12">
+								<div class="perfil-title">
+								<h3>Dados pessoais</h3>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-12">
+								<strong>CPF</strong> {{Aluno.cpf}}
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-12">
+								<strong>Login SIGAA</strong>  {{Aluno.username}}
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-12">
+								<strong>ID Discente</strong> {{Aluno.id_discente}}
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-12">
+								<strong>Periodo Atual</strong> {{Aluno.semestre[1]}}
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-9 ">
+					<div class="box-perfil">
+						<div class="row">
+							<div class="col-12">
+								<div class="perfil-title">
+							<a><h3>Turmas</h3></a></div>
+								<table class="table table-hover">
+									<thead>
+								    <tr>
+								    	<th scope="col">ID </th>
+								      <th scope="col">Nome </th>
+								      <th scope="col">Horário</th>
+								      <th scope="col">Código</th>
+								    </tr>
+								  </thead>
+								  <tbody>
+								    <tr *ngFor="let turma of Aluno.turmas">
+								    	<td>{{turma['id-componente']}}</td>
+								      <td>{{turma['nome-componente']}}</td>
+								      <td>{{turma['descricao-horario']}}</td>
+								      <td>{{turma['codigo-componente']}}</td>
+								    </tr>
+								  </tbody>
+								</table>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-3">
+					<button class="btn btn-dark" (click)="navigate('/meus-semestres')">Meus Semestres</button>
+				</div>
+				<div class="col-sm-3">
+					<button class="btn btn-dark">teste</button>
+				</div>
+				<div class="col-sm-3">
+					<button class="btn btn-dark">teste</button>
+				</div>
+				<div class="col-sm-3">
+					<button class="btn btn-dark">teste</button>
+				</div>
+			</div>
+			
+		</div>
+	</section>
+	
+</main>
+
+

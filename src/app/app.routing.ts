@@ -1,3 +1,4 @@
+import { ModuleWithProviders } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 
@@ -11,19 +12,34 @@ import { DisciplinaComponent } from './disciplinas/disciplina/disciplina.compone
 import { EnfasesComponent } from './enfases/enfases.component';
 import { OrientadorComponent } from './orientador/orientador.component';
 import { LoginComponent } from './login/login.component';
+import { MeusSemestresComponent } from './orientador/guias/meus-semestres/meus-semestres.component';
 
 const routes: Routes = [
-	{ path: '', component: HomeComponent },
+	{ path: '', component: HomeComponent  , pathMatch: 'full'},
 	{ path: 'login', component: LoginComponent },
 	{ path: 'tour', component: TourComponent },
 	{ path: 'estagios',	component: EstagiosComponent },
 	{ path: 'enfases', component: EnfasesComponent },
 	{ path: 'curriculos',	component: CurriculosComponent },
 	{ path: 'disciplinas', component: DisciplinasComponent,
-			children:[{path:':codigo', component:DisciplinaComponent}]},
-	{ path: 'orientador',	component: OrientadorComponent },
+			children:
+			[
+				{path:':codigo', component:DisciplinaComponent}
+				
+			]
+		
+	},
+	{ path: 'orientador',	component: OrientadorComponent/*,
+			children: 
+			[
+    		{ path: '', component: OrientadorComponent ,pathMatch: 'full'},
+    		{ path: 'meus-semestres', component: MeusSemestresComponent }
+    	]	*/
+  },
 	{ path: '**',	component: NotFoundComponent }
 ];
+
+
 
 @NgModule ({
 	imports: [RouterModule.forRoot(routes)],

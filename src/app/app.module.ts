@@ -23,6 +23,7 @@ import { DisciplinaComponent } from './disciplinas/disciplina/disciplina.compone
 import { DisciplinaService } from './disciplinas/disciplina/disciplina.service';
 import { EnfasesComponent } from './enfases/enfases.component';
 import { OrientadorComponent } from './orientador/orientador.component';
+import { MeusSemestresComponent } from './orientador/guias/meus-semestres/meus-semestres.component';
 import { LoginComponent } from './login/login.component';
 
 
@@ -37,8 +38,9 @@ import { LoginComponent } from './login/login.component';
     DisciplinaComponent,
     EnfasesComponent,
     EstagiosComponent,
+    LoginComponent,
     OrientadorComponent,
-    LoginComponent
+    MeusSemestresComponent
   ],
   imports: [
     BrowserModule,

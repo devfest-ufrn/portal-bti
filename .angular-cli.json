@@ -6,6 +6,10 @@
   "apps": [
     {
       "root": "src",
+      "dependencies": {
+        "primeng": "^4.1.0",
+        "font-awesome": "^4.7.0"
+      },
       "outDir": "dist",
       "assets": [
         "assets",
@@ -19,12 +23,15 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "styles.css"
+        "styles.css",
+        "../node_modules/primeng/resources/themes/omega/theme.css",
+        "../node_modules/primeng/resources/primeng.min.css"
       ],
       "scripts": [
         "../node_modules/jquery/dist/jquery.min.js",
         "../node_modules/ng2-smooth-scroll/lib/ng2-SmoothScroll.directive.ts",
         "../node_modules/ng2-page-scroll/bundles/ng2-page-scroll.umd.min.js"
+        
         ],
       "environmentSource": "environments/environment.ts",
       "environments": {
