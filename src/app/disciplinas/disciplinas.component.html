@@ -1,10 +1,46 @@
-<div class="container-fluid">
-  <h1>Disciplinas</h1>
-  <p>Consulte informações sobre as disciplinas.</p>
-  <h1>Digite o código da disciplina para pesquisar</h1>
-  <p>
-    <input type="text" name="codigo" placeholder="Código" #codigo/>
-    <button (click)="select(codigo.value)">Procurar</button>
-  </p>
-  <router-outlet></router-outlet>
-</div>
+<main class="correcao-menu">
+	<section>
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<div class="first-div-container">
+						<h1 class="display-2">Disciplinas<small class="sub-title">Consulte informações sobre as disciplinas</small></h1>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<article id="conteudo"  >
+	
+		<section id="disciplina_search" class="section-content-ajust">
+			<div class="container">
+			  <div class="row">
+			    <div class="col-12">
+			      <h3 class="welcome-name">Digite o código da disciplina para pesquisar</h3>
+			    </div>
+			  </div>
+			   <form>
+        <div class="row">
+			    <div class="col-12">
+			      <div class="row form-group">
+			        <div class="col-sm-12">
+			         
+			          <input  class="form-control"  type="text" name="codigo" placeholder="Código" #codigo/>
+                
+			        </div>
+			       </div>
+			       <div class="row form-group">
+			        <div class="col-sm-12">
+			          <input type="submit" class="btn btn-primary w-100" (click)="select(codigo.value)" value="Procurar"> 
+			        </div>
+			      </div>
+
+			    </div>
+			  </div>
+			  </form>
+        
+			</div>
+		</section>
+		<router-outlet></router-outlet>
+	</article>
+</main>
