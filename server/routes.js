@@ -10,7 +10,9 @@ let vagas = require('./controllers/vagas.controller');
 let orientador = require('./controllers/orientador.controller');
 
 router
+	.get('/disciplinas', disciplinas.get_query)
 	.get('/disciplinas/:codigo', disciplinas.get)
+	
 	.get('/curriculos/:enfase', curriculos.curriculos_bti)
 	
 	.get('/vagas/apoio-tecnico', vagas.apoio_tecnico)

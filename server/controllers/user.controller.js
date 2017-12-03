@@ -1,5 +1,6 @@
 'use strict';
 
+let request = require('request-promise');
 let credencials = require('../environment');
 let secret = credencials['client-secret'];
 let id = credencials['client-id'];
@@ -15,8 +16,6 @@ exports.authenticate = (req, res) => {
 		'method': 'POST',
 		'uri': base_url + `/authz-server/oauth/token?client_id=${id}&client_secret=${secret}&redirect_uri=${redirect_uri}&grant_type=authorization_code&code=${code}`
 	};
-	let request = require('request-promise');
-	console.log(options);
 	request(options)
 		.then(response => {
 			res.status(200).send(response);
@@ -81,7 +80,14 @@ exports.id_discente = (req, res) => {
 			};
 			request(options)
 				.then( response => {
-					discente.id_discente = response[0]['id-discente'];
+					let last = response.length;
+					let id_bti = 92127264;
+					for (let vinculo of response) {
+						if ( vinculo['id-curso'] ==  id_bti ) {
+							discente.id_discente = vinculo['id-discente'];
+							break;
+						}
+					}
 					// envia o primeiro vinculo
 					res.send(discente);
 				})

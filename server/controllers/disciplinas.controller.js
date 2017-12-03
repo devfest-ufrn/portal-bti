@@ -1,20 +1,24 @@
 'use strict'
 
-const credencials = require('../environment');
+let request = require('request-promise');
+let credencials = require('../environment');
+let secret = credencials['client-secret'];
+let id = credencials['client-id'];
+let base_url = credencials['api-url'];
+let version = credencials['version'];
+let localhost = credencials['localhost'];
+let key = credencials['x-api-key'];
 
 exports.get = (req, res) => {
-	var request = require('request-promise')
-	var options = {
+	let options = {
 		'method': 'POST',
-		'uri': `${credencials['api-url']}/authz-server/oauth/token?client_id=${credencials['client-id']}&client_secret=${credencials['client-secret']}&grant_type=client_credentials`,
+		'uri': `${base_url}/authz-server/oauth/token?client_id=${id}&client_secret=${secret}&grant_type=client_credentials`,
 		'json': true
-	}
-	// request para as credenciais de autorização
+	};
 	request(options)
 		.then((auth) => {
-			var request = require('request-promise')
-			var codigo = req.params.codigo
-			var options = {
+			let codigo = req.params.codigo;
+			let options = {
 				'method': 'GET',
 				'uri': `${credencials['api-url']}/curso/v0.1/componentes-curriculares?codigo=${codigo}&limit=1`,
 				'json': true,
@@ -22,21 +26,61 @@ exports.get = (req, res) => {
 					'authorization': `${auth.token_type} ${auth.access_token}`,
 					'x-api-key': credencials['x-api-key']
 				}
-			}
-			// request para o componente-curricular
+			};
+			
+			if (codigo.length != 7)
+				res.status(404).send('Código da disciplina mal informado');
+			
 			request(options)
 				.then((response) => {
-					// formata a resposta da api
-					const disciplina = response[0];
-					res.header('Access-Control-Allow-Origin', '*').status(200).send(disciplina)
+					if (response.length == 0 ) {
+						res.status(404).send('Disciplina não encontrada');
+					} else {
+						const disciplina = response[0];
+						res.json(disciplina);
+					}
 				})
 				.catch((error)=>{
-					// Error on getting disciplina
-					res.header('Access-Control-Allow-Origin', '*').status(error.statusCode).send(error.message)
+					res.status(error.statusCode).send(error.message);
 				})
 		})
 		.catch((err) => {
-				// Authentication error
-				res.status(err.statusCode).send(err.message)
+				res.status(err.statusCode).send(err.message);
+		});
+}
+
+exports.get_query = (req, res) => {
+	let options = {
+		'method': 'POST',
+		'uri': `${base_url}/authz-server/oauth/token?client_id=${id}&client_secret=${secret}&grant_type=client_credentials`,
+		'json': true
+	};
+	request(options)
+		.then((auth) => {
+			let codigo = req.query.codigo;
+			let options = {
+				'method': 'GET',
+				'uri': `${credencials['api-url']}/curso/v0.1/componentes-curriculares?codigo=${codigo}&limit=1`,
+				'json': true,
+				'headers': {
+					'authorization': `${auth.token_type} ${auth.access_token}`,
+					'x-api-key': credencials['x-api-key']
+				}
+			};
+			request(options)
+				.then((response) => {
+					if (response.length == 0 ) {
+						res.status(404).send('Disciplina não encontrada');
+					} else {
+						const disciplina = response[0];
+						res.json(disciplina);
+					}
+				})
+				.catch((error)=>{
+					res.status(error.statusCode).send(error.message);
+				})
+		})
+		.catch((err) => {
+				res.status(err.statusCode).send(err.message);
 		});
 }
