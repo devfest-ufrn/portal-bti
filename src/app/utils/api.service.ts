@@ -3,7 +3,7 @@ import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from '@angular
 import { Observable } from 'rxjs/Observable';
 import { environment } from '../../environments/environment'
 
-import { Disciplina } from './interfaces';
+import { Disciplina, Discente, Turma } from './interfaces';
 
 @Injectable()
 export class ApiService {
@@ -13,9 +13,19 @@ export class ApiService {
 	) { }
 	
 	getDisciplina(codigo:string):Observable<Disciplina> {
-		// requisita a api local
 		let server_url = environment.localhost;
 		return this.http.get(`${server_url}/api/disciplinas/${codigo}`);
 	}
 	
+	getSemestres():Observable<Discente> {
+		let server_url = environment.localhost;
+		let body = {
+			token: this.getToken()
+		}
+		return this.http.post(server_url + '/api/user/turmas',body);
+	}
+	
+	private getToken():string {
+		return window.localStorage.getItem('token');
+	}
 }

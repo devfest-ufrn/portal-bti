@@ -15,16 +15,26 @@ export interface Disciplina {
 
 export interface Discente {
 	'cpf': string,
-    'nome': string,
+	'nome': string,
 	'id_discente': number,
-    'username': string,
-    'semestre': string[];
-    'turmas': Turma[];
+	'username': string,
+	'semestre': string[];
+	'turmas': Turma[];
 }
 
 export interface Turma {
-	'nome-componente': string,
-	'descricao-horario': string,
+	'ano': number,
 	'codigo-componente': string,
-	'id-componente': number
+	'codigo-turma':string,
+	'descricao-horario':string,
+	'id-componente':number,
+	'id-discente':number,
+	'id-situacao-turma':number,
+	'id-turma':number,
+	'id-unidade':number,
+	'local':string,
+	'nome-componente':string,
+	'periodo':number,
+	'sigla-nivel':string,
+	'subturma':boolean
 }

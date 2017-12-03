@@ -11,14 +11,15 @@ let key = credencials['x-api-key'];
 exports.authenticate = (req, res) => {
 	let redirect_uri = req.body.redirect_uri;
 	let code = req.body.code;
-	var options = {
+	let options = {
 		'method': 'POST',
 		'uri': base_url + `/authz-server/oauth/token?client_id=${id}&client_secret=${secret}&redirect_uri=${redirect_uri}&grant_type=authorization_code&code=${code}`
 	};
 	let request = require('request-promise');
+	console.log(options);
 	request(options)
 		.then(response => {
-			res.send(response);
+			res.status(200).send(response);
 		})
 		.catch(err => {
 			res.status(err.statusCode).send(err.message);
@@ -29,7 +30,7 @@ exports.authenticate = (req, res) => {
 	username, nome, cpf */
 exports.user_info = (req, res) => {
 	let token = req.body.token;
-	var options = {
+	let options = {
 		'method': 'GET',
 		'json': true,
 		'uri': base_url + `/usuario/${version}/usuarios/info`,
@@ -56,7 +57,7 @@ exports.user_info = (req, res) => {
 /* necessita cpf, user_info */
 exports.id_discente = (req, res) => {
 	let token = req.body.token;
-	var options = {
+	let options = {
 		'method': 'POST',
 		'json': true,
 		'uri': localhost + `/api/user/info`,
@@ -109,7 +110,7 @@ exports.semestres_cursados = (req, res) => {
 		.then(discente => {
 			let token = req.body.token;
 			let id = discente.id_discente;
-			var options = {
+			let options = {
 				'method': 'GET',
 				'json': true,
 				'uri': base_url + `/matricula/${version}/semestres-cursados?id-discente=${id}`,
@@ -136,7 +137,7 @@ exports.semestres_cursados = (req, res) => {
 /* necessita semestres, semestres_cursados */
 exports.turmas_semestre_atual = (req, res) => {
 	let token = req.body.token;
-	var options = {
+	let options = {
 		'method': 'POST',
 		'json': true,
 		'uri': localhost + '/api/user/semestres_cursados',
@@ -153,7 +154,7 @@ exports.turmas_semestre_atual = (req, res) => {
 			let id = discente.id_discente;
 			let periodo = discente.semestre.periodo;
 			let ano = discente.semestre.ano;
-			var options = {
+			let options = {
 				'method': 'GET',
 				'json': true,
 				'uri': base_url + `/turma/${version}/turmas?id-discente=${id}&ano=${ano}&periodo=${periodo}`,
@@ -166,7 +167,6 @@ exports.turmas_semestre_atual = (req, res) => {
 				.then( response => {
 					// array de turmas do semestre atual
 					discente.turmas = response;
-					console.log('request successful');
 					res.send(discente);
 				})
 				.catch( err => {
@@ -181,7 +181,7 @@ exports.turmas_semestre_atual = (req, res) => {
 /* turmas de todos os semestres */
 exports.turmas = (req, res) => {
 	let token = req.body.token;
-	var options = {
+	let options = {
 		'method': 'POST',
 		'json': true,
 		'uri': localhost + `/api/user/semestres_cursados`,
@@ -193,7 +193,7 @@ exports.turmas = (req, res) => {
 	request(options)
 		.then( discente => {
 			let id = discente.id_discente;
-			var options = {
+			let options = {
 				'method': 'GET',
 				'json': true,
 				'uri': base_url + `/turma/${version}/turmas?id-discente=${id}`,
