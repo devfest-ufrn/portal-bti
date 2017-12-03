@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import { AuthService } from '../shared/services/auth.service';
+import { AuthService } from '../utils/auth.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 
@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 					data => {
 						let token = data['access_token'];
 						this.auth.setToken(token);
-						//this.redirectToOrientadorPage();
+						this.redirectToOrientadorPage();
 					},
 					(err: HttpErrorResponse) => {
 						if (err.error instanceof Error) {

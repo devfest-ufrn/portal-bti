@@ -1,13 +1,17 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from '@angular/common/http';
-import { environment } from '../../../environments/environment'
+import { Observable } from 'rxjs/Observable';
+import { environment } from '../../environments/environment';
+import { Discente } from './interfaces';
 
 @Injectable()
 export class AuthService {
 
-	constructor(private http:HttpClient) { }
+	constructor(
+		private http:HttpClient,
+	) { }
 	
-	getUserInfo() {
+	getUserInfo():Observable<Discente> {
 		let body = {
 			token: this.getToken()
 		}
@@ -16,13 +20,15 @@ export class AuthService {
 	
 	generateToken(code: String) {
 		let api_sinfo = environment.api_sinfo_credencials;
-		let local_url = environment.localhost;
+		let server_url = environment.localhost;
+		let current_url = window.location.hostname +':'+ window.location.port;
+		console.log(current_url);
 		let body = {
-			redirect_uri: local_url + '/login',
+			redirect_uri: 'https://' + current_url + '/login',
 			grant_type: 'authorization_code',
 			code: code
 		}
-		return this.http.post(`/api/user/auth`,body);
+		return this.http.post(server_url + '/api/user/auth',body);
 	}
 	
 	getToken(): string {
@@ -41,7 +47,7 @@ export class AuthService {
 	// e retorna para a página: localhost:8080/login
 	redirectToLoginPage() {
 		const api_sinfo = environment.api_sinfo_credencials;
-		const local_url = environment.localhost;
+		const local_url = `https://${window.location.hostname}:${window.location.port}`;
 		window.location.href = `${api_sinfo.url}/authz-server/oauth/authorize?client_id=${api_sinfo.client_id}&response_type=code&redirect_uri=${local_url}/login`
 	}
 	
