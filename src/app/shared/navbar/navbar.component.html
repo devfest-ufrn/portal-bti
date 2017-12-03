@@ -1,17 +1,20 @@
-
-
-
-  <nav class=" navbar navbar-expand-lg navbar-light background-nav" [class.fixed]="navIsFixed"  >
+  <nav class=" navbar navbar-expand-lg navbar-light background-nav" [class.fixed]="navIsFixed">
     <div class="container">
-      <a class="navbar-brand" scrollTo="boas-vindas" href="\">Portal BTI</a>
+      <a class="navbar-brand" scrollTo="boas-vindas" routerLink="">Portal BTI</a>
       <button class="navbar-toggler" (click)="toggleState()"  type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon" ></span>
       </button>
       <div class="collapse navbar-collapse" [ngClass]="{ 'collapse': isIn }" id="navbarNav">
         <ul class="navbar-nav" >
+          <li class="nav-item active"><a class="nav-link" routerLink="">Início<span class="sr-only"></span></a></li>
+          <li class="nav-item active"><a class="nav-link" routerLink="tour">Tour<span class="sr-only"></span></a></li>
+          <li class="nav-item active"><a class="nav-link" routerLink="disciplinas">Disciplinas<span class="sr-only"></span></a></li>
+          <li class="nav-item active"><a class="nav-link" routerLink="orientador">Orientador<span class="sr-only"></span></a></li>
+          <!--
           <li class="nav-item active" *ngFor="let nome of nomes_menu; let i = index">
             <a class="nav-link" href="#"  scrollTo="{{componentes[i]}}">{{nome}}  <span class="sr-only"></span></a>
           </li>
+          -->
         </ul>
       </div>
     </div>

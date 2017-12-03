@@ -18,6 +18,7 @@
 	font-weight: bold !important;
 }
 .navbar-brand {
+	text-shadow: 0 0 8px black;
 	color:#FFFFFF !important;
 }
 
@@ -39,7 +40,7 @@ nav>.container{
 }
 
 .navbar-animation {
-   transition: all 1s ;
+	transition: all 1s ;
 }
 .navbar-toggler-icon{
 	font-weight:900;
