@@ -1,26 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule, Routes } from '@angular/router';
 import { OrientadorComponent } from './orientador.component';
-/*
-const routes : Routes = [
-  {
-    path: '', pathMatch: 'full', component: OrientadorComponent,
-    children: [
-      {
-        path: 'meus-semestres',
-        component: MeusSemestresComponent
-      }
-    ]
-  },
-]
-*/
+import { MeusSemestresComponent } from './guias/meus-semestres/meus-semestres.component';
+
 @NgModule({
   imports: [
-    CommonModule//RouterModule.forChild(routes)
+    CommonModule
   ],
   declarations: [
-    OrientadorComponent
-  ]//exports: [ RouterModule ]
+    OrientadorComponent,
+    MeusSemestresComponent
+  ]
 })
 export class OrientadorModule { }

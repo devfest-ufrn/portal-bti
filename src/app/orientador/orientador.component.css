@@ -1,0 +1,40 @@
+	.perfil-title{
+		
+		border-bottom: 1px solid rgb(233,236,239);
+		margin-bottom:40px;
+	}
+	.perfil-title h3{
+		font-weight: 300;
+	}
+	.first-div-container{
+		padding-top:3em;
+		padding-bottom:3em;
+		color:white;
+		text-shadow: 2px 2px #000000;
+	}
+.correcao-menu{
+	padding-top:50px;
+}
+#perfil{
+	background-color:white;
+}
+.section-content-ajust{
+	padding-top:40px;
+	padding-bottom:40px;
+}
+.welcome-name{
+	text-decoration:none !important;
+  cursor:pointer;
+  color:rgb(0,123,255) !important;
+  
+
+}
+.welcome-name:hover{
+	text-decoration:underline !important;
+  text-shadow: 1px 1px 1px #555;
+}
+.box-perfil{
+	padding:1px;
+	border: 1px solid rgb(233,236,239);
+	border-radius: 10px;
+}
