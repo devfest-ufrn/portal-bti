@@ -13,6 +13,7 @@ import { Turma } from '../../../utils/interfaces';
 export class MeusSemestresComponent implements OnInit, OnDestroy {
 	
 	private turmas:Turma[];
+	private data_received:boolean = false;
 	
 	constructor(
 		private api:ApiService
@@ -22,6 +23,7 @@ export class MeusSemestresComponent implements OnInit, OnDestroy {
 		this.api.getSemestres().subscribe(
 			discente => {
 				this.turmas = discente.turmas;
+				this.data_received = true;
 				console.log(this.turmas);
 			},
 			(err: HttpErrorResponse) => {

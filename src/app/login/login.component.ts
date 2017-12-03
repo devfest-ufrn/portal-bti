@@ -16,6 +16,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 	
 	constructor(
 		private auth:AuthService,
+		private router:Router,
 		private route:ActivatedRoute
 	) { }
 
@@ -41,7 +42,6 @@ export class LoginComponent implements OnInit, OnDestroy {
 						}
 					}
 				)
-				//
 			} else {
 				this.auth.redirectToLoginPage();
 			}
@@ -54,7 +54,8 @@ export class LoginComponent implements OnInit, OnDestroy {
 	
 	// @TODO use angular mechanics
 	redirectToOrientadorPage() {
-		window.location.href = environment.localhost + '/orientador';
+		this.router.navigate(['/orientador']);
+		// window.location.href = environment.localhost + '/orientador';
 	}
 
 }

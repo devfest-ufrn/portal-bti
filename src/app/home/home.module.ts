@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 import { HomeComponent } from './home.component';
 import { ResumoComponent } from './resumo/resumo.component';
@@ -16,7 +17,8 @@ import { NavbarModule } from '../shared/navbar/navbar.module';
   imports: [
 		CommonModule,
 		NavbarModule,
-		FooterModule
+		FooterModule,
+		RouterModule
   ],
 	declarations: [
 	  HomeComponent,

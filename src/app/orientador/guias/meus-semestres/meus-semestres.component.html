@@ -1,13 +1,31 @@
-<main class="correcao-menu">
-	<section>
-		<div class="container">
-			<div class="row">
-				<div class="col-12">
-					<div class="first-div-container">
-						<h1 class="display-2">Meus Semestres</h1>
-					</div>
+<section id="meus-semestres">
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<div class="first-div-container">
+					<h3 class="display-4">Meus Semestres</h3>
 				</div>
 			</div>
 		</div>
-	</section>
-</main>
+		<div class="row">
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th scope="col">ID </th>
+						<th scope="col">Nome </th>
+						<th scope="col">Horário</th>
+						<th scope="col">Código</th>
+					</tr>
+				</thead>
+				<tbody *ngIf="data_received">
+					<tr *ngFor="let turma of turmas">
+						<td>teste</td>
+						<td>teste</td>
+						<td>teste</td>
+						<td>teste</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</section>

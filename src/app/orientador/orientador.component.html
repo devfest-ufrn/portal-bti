@@ -4,98 +4,96 @@
 			<div class="row">
 				<div class="col-12">
 					<div class="first-div-container">
-						<h1 class="display-2">Orientador Virtual</h1>
+						<h2 class="display-2">Orientador Virtual</h2>
 					</div>
 				</div>
 			</div>
 		</div>
 	</section>
-	<section id="perfil" class="section-content-ajust">
-		<div class="container" *ngIf="data_received">
-			<div class="row">
-				<div class="col-12">
-					<div class="perfil-title">
-						<a class="welcome-name" data-toggle="collapse" (click)="toggleState()" aria-expanded="false" aria-controls="perfil" title="Clique para ver seu perfil!"><h3>Bem-vindo, {{discente.nome}}<i class="fa fa-eye" aria-hidden="true"></i></h3></a>
+	<article id="conteudo"  >
+		<div id="carregamento-conteudo" *ngIf="data_received; else loading" >
+		<section id="perfil" class="section-content-ajust">
+			<div class="container">
+				<div class="row perfil-title">
+					<div class="col-8">
+						<div class="">
+							<a class="welcome-name" data-toggle="collapse" (click)="toggleState()" aria-expanded="false" aria-controls="perfil" title="Clique para ver seu perfil!"><h3>Bem-vindo, {{discente.nome}}<i class="fa fa-eye" aria-hidden="true"></i></h3></a>
+						</div>
+					</div>
+					<div class="col-sm-2">
+						<button class="btn btn-dark" routerLink="meus-semestres">Meus Semestres</button>
+					</div>
+					<div class="col-sm-2">
+						<button class="btn btn-dark">teste</button>
 					</div>
 				</div>
-			</div>
-			<!-- vou colocar essa div de baixo pra aparecer dps que clicar no "bem vindo fulano"-->
-			<div class="row collapse " [ngClass]="{ 'collapse': isIn }" id="perfil" >
-				<div class="col-3 ">
-					<div class="box-perfil">
-						<div class="row">
-							<div class="col-sm-12">
-								<div class="perfil-title">
-								<h3>Dados pessoais</h3>
+				<!-- vou colocar essa div de baixo pra aparecer dps que clicar no "bem vindo fulano"-->
+				<div class="row collapse " [ngClass]="{ 'collapse': isIn }" id="perfil" >
+					<div class="col-md-3 col-xs-12">
+						<div class="box-perfil">
+							<div class="row">
+								<div class="col-sm-12">
+									<div class="perfil-title">
+									<h3>Dados pessoais</h3>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-12">
+									<strong>CPF</strong> {{discente.cpf}}
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-12">
+									<strong>Login SIGAA</strong>  {{discente.username}}
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-12">
+									<strong>ID Discente</strong> {{discente.id_discente}}
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-12">
+									<strong>Periodo Atual</strong> {{discente.semestre[1]}}
 								</div>
 							</div>
 						</div>
-						<div class="row">
-							<div class="col-sm-12">
-								<strong>CPF</strong> {{discente.cpf}}
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-sm-12">
-								<strong>Login SIGAA</strong>  {{discente.username}}
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-sm-12">
-								<strong>ID Discente</strong> {{discente.id_discente}}
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-sm-12">
-								<strong>Periodo Atual</strong> {{discente.semestre[1]}}
-							</div>
-						</div>
 					</div>
-				</div>
-				<div class="col-9 ">
-					<div class="box-perfil">
-						<div class="row">
-							<div class="col-12">
-								<div class="perfil-title">
-							<a><h3>Turmas</h3></a></div>
-								<table class="table table-hover">
-									<thead>
-								    <tr>
-								    	<th scope="col">ID </th>
-								      <th scope="col">Nome </th>
-								      <th scope="col">Horário</th>
-								      <th scope="col">Código</th>
-								    </tr>
-								  </thead>
-								  <tbody *ngIf="data_received">
-								    <tr *ngFor="let turma of discente.turmas">
-								    	<td>{{turma['id-componente']}}</td>
-								      <td>{{turma['nome-componente']}}</td>
-								      <td>{{turma['descricao-horario']}}</td>
-								      <td>{{turma['codigo-componente']}}</td>
-								    </tr>
-								  </tbody>
-								</table>
+					<div class="col-md-9 col-xs-12">
+						<div class="box-perfil">
+							<div class="row">
+								<div class="col-12">
+									<div class="perfil-title">
+								<a><h3>Turmas</h3></a></div>
+									<table class="table table-hover">
+										<thead>
+									    <tr>
+									    	<th scope="col">ID </th>
+									      <th scope="col">Nome </th>
+									      <th scope="col">Horário</th>
+									      <th scope="col">Código</th>
+									    </tr>
+									  </thead>
+									  <tbody *ngIf="data_received">
+									    <tr *ngFor="let turma of discente.turmas">
+									    	<td>{{turma['id-componente']}}</td>
+									      <td>{{turma['nome-componente']}}</td>
+									      <td>{{turma['descricao-horario']}}</td>
+									      <td>{{turma['codigo-componente']}}</td>
+									    </tr>
+									  </tbody>
+									</table>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-			<div class="row">
-				<div class="col-sm-3">
-					<button class="btn btn-dark" routerLink="meus-semestres">Meus Semestres</button>
-				</div>
-				<div class="col-sm-3">
-					<button class="btn btn-dark">teste</button>
-				</div>
-				<div class="col-sm-3">
-					<button class="btn btn-dark">teste</button>
-				</div>
-				<div class="col-sm-3">
-					<button class="btn btn-dark">teste</button>
-				</div>
-			</div>
-			<router-outlet></router-outlet>
+		</section>
+		<router-outlet></router-outlet>
+		
 		</div>
-	</section>
+		<ng-template #loading>Carregando...</ng-template>
+	</article>
 </main>
