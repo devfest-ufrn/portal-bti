@@ -25,7 +25,8 @@ exports.authenticate = (req, res) => {
 		});
 };
 
-/* username, nome, cpf */
+/* necessita apenas do token 
+	username, nome, cpf */
 exports.user_info = (req, res) => {
 	let token = req.body.token;
 	var options = {
@@ -52,7 +53,7 @@ exports.user_info = (req, res) => {
 		});
 };
 
-/* id-discente */
+/* necessita cpf, user_info */
 exports.id_discente = (req, res) => {
 	let token = req.body.token;
 	var options = {
@@ -92,7 +93,7 @@ exports.id_discente = (req, res) => {
 		});
 };
 
-/* semestres: ano, periodo */
+/* necessita id-discente, id_discente */
 exports.semestres_cursados = (req, res) => {
 	let token = req.body.token;
 	let options = {
@@ -120,7 +121,7 @@ exports.semestres_cursados = (req, res) => {
 			request(options)
 				.then( response => {
 					// envia o todos os semestes
-					discente.semestre = response;
+					discente.semestres = response;
 					res.send(discente);
 				})
 				.catch( err => {
@@ -132,7 +133,7 @@ exports.semestres_cursados = (req, res) => {
 		});
 };
 
-/* turmas do semestre atual */
+/* necessita semestres, semestres_cursados */
 exports.turmas_semestre_atual = (req, res) => {
 	let token = req.body.token;
 	var options = {
@@ -147,6 +148,8 @@ exports.turmas_semestre_atual = (req, res) => {
 	request(options)
 		.then(discente => {
 			let token = req.body.token;
+			let current_semester = discente.semestres.length - 1;
+			discente.semestre = discente.semestres[current_semester];
 			let id = discente.id_discente;
 			let periodo = discente.semestre.periodo;
 			let ano = discente.semestre.ano;
@@ -162,8 +165,8 @@ exports.turmas_semestre_atual = (req, res) => {
 			request(options)
 				.then( response => {
 					// array de turmas do semestre atual
-					let current_semester = response.length - 1;
-					discente.turmas = response[current_semester];
+					discente.turmas = response;
+					console.log('request successful');
 					res.send(discente);
 				})
 				.catch( err => {
@@ -201,7 +204,6 @@ exports.turmas = (req, res) => {
 			};
 			request(options)
 				.then( response => {
-					// array de turmas do semestre atual
 					discente.turmas = response;
 					res.send(discente);
 				})

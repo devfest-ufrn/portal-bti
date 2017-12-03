@@ -18,7 +18,7 @@ exports.meus_semestres = (req, res) => {
 		'body': {
 			'token': token
 		}
-	}
+	};
 	// request para as credenciais de autorização
 	request(options)
 		.then( turmas => {
