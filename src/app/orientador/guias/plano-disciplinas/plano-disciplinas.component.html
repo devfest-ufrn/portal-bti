@@ -3,12 +3,12 @@
 		<div class="row">
 			<div class="col-12">
 				<div class="first-div-container">
-					<h3 class="display-4">Meus Semestres</h3>
+					<h3 class="display-4">Plano de Disciplinas</h3>
 				</div>
 			</div>
 		</div>
-		<div class="row" *ngIf="data_received">
-			<table class="table table-hover" *ngFor="let ano of turmas;  let i = index" [attr.data-index]='i'>
+		<div class="row">
+			<table class="table table-hover">
 				<thead>
 					<tr>
 						<th scope="col">ID </th>
@@ -18,12 +18,10 @@
 					</tr>
 				</thead>
 				<tbody *ngIf="data_received">
-					<tr *ngFor="let turma of ano" [attr.data-index]='j'> 
-						<td>teste</td>
-						<td>teste</td>
-						<td>teste</td>
-						<td>teste</td>
-					</tr>
+						<td >ID </td>
+						<td >Nome </td>
+						<td >Horário</td>
+						<td >Código</td>
 				</tbody>
 			</table>
 		</div>

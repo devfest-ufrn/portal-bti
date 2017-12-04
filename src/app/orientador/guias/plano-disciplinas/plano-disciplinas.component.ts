@@ -5,18 +5,15 @@ import { ApiService } from '../../../utils/api.service';
 import { Turma } from '../../../utils/interfaces';
 
 @Component({
-  selector: 'app-meus-semestres',
-  templateUrl: './meus-semestres.component.html',
-  styleUrls: ['./meus-semestres.component.css'],
+  selector: 'app-plano-disciplinas',
+  templateUrl: './plano-disciplinas.component.html',
+  styleUrls: ['./plano-disciplinas.component.css'],
   providers: [ ApiService ]
 })
-export class MeusSemestresComponent implements OnInit, OnDestroy {
+export class PlanoDisciplinasComponent implements OnInit, OnDestroy {
 	
 	private turmas:any;
-	// private turmas_2:Turma[][];
-	private data_received:boolean = false;
-	
-
+	private data_received:boolean;
 	constructor(
 		private api:ApiService
 	){}
@@ -27,10 +24,10 @@ export class MeusSemestresComponent implements OnInit, OnDestroy {
 				let turmas = discente.turmas;
 				this.turmas = {};
 				for( let turma of turmas ) {
-					this.turmas[turma.ano] = {};
+					this.turmas[turma.ano.toString()] = {};
 				}
 				for( let turma of turmas ) {
-					this.turmas[turma.ano][turma.periodo] = turma;
+					this.turmas[turma.ano.toString()][turma.periodo.toString()] = turma;
 				}
 				console.log(this.turmas);
 				this.data_received = true;
