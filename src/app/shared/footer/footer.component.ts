@@ -8,8 +8,12 @@ import { Component, OnInit } from '@angular/core';
 export class FooterComponent implements OnInit {
 
   constructor() { }
+  
+  ngOnInit() { }
 
-  ngOnInit() {
+  navigate() {
+    document.documentElement.scrollTop = 0;
   }
-
+  
+  
 }

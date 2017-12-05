@@ -25,7 +25,13 @@ export class NavbarComponent implements OnInit {
   toggleState() { // click handler
     this.isIn = this.isIn === false ? true : false; 
   }
-
+  
+  // ao clicar em um link sobe a tela pro inicio e fecha o menu(mobile) caso esteja aberto
+  navigate() {
+    this.toggleState();
+    document.documentElement.scrollTop = 0;
+  }
+  
   @HostListener("window:scroll", [])
   onWindowScroll() {
     const scroll =  document.documentElement.scrollTop || 0;

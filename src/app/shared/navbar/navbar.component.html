@@ -5,7 +5,7 @@
         <span class="navbar-toggler-icon" ></span>
       </button>
       <div class="collapse navbar-collapse" [ngClass]="{ 'collapse': isIn }" id="navbarNav">
-        <ul class="navbar-nav" >
+        <ul class="navbar-nav" (click)="navigate()">
           <li class="nav-item active"><a class="nav-link" routerLink="">Início<span class="sr-only"></span></a></li>
           <li class="nav-item active"><a class="nav-link" routerLink="tour">Tour<span class="sr-only"></span></a></li>
           <li class="nav-item active"><a class="nav-link" routerLink="disciplinas">Disciplinas<span class="sr-only"></span></a></li>
